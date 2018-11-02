@@ -1,0 +1,146 @@
+All read
+
+
+	NO index
+	real	0m9.221s
+	user	0m0.099s
+	sys	0m0.022s
+
+	real	0m9.499s
+	user	0m0.101s
+	sys	0m0.024s
+
+	real	0m9.129s
+	user	0m0.097s
+	sys	0m0.023s
+
+	Average	0m9.283s
+
+
+
+
+	index - startdate
+	real	0m6.836s
+	user	0m0.099s
+	sys	0m0.022s
+
+	real	0m7.236s
+	user	0m0.101s
+	sys	0m0.023s
+
+	real	0m7.131s
+	user	0m0.100s
+	sys	0m0.023s
+
+	Average	0m7.067s
+
+
+
+
+	index - pid
+	real	0m1.117s
+	user	0m0.098s
+	sys	0m0.023s
+
+	real	0m1.221s
+	user	0m0.099s
+	sys	0m0.023s
+
+	real	0m1.215s
+	user	0m0.099s
+	sys	0m0.024s
+
+	Average	0m1.184s
+
+
+
+
+	compound indexes - startdate, enddate
+	real	0m4.336s
+	user	0m0.097s
+	sys	0m0.022s
+
+	real	0m4.202s
+	user	0m0.099s
+	sys	0m0.023s
+
+	real	0m4.547s
+	user	0m0.098s
+	sys	0m0.022s
+
+	Average	0m4.361s
+
+
+
+
+Mix 
+
+	NO index
+	real	0m7.128s
+	user	0m0.103s
+	sys	0m0.022s
+
+	real	0m6.979s
+	user	0m0.100s
+	sys	0m0.022s
+
+	real	0m6.964s
+	user	0m0.101s
+	sys	0m0.022s
+
+	Average	0m7.099s
+
+
+
+
+	index - startdate
+	real	0m6.888s
+	user	0m0.098s
+	sys	0m0.022s
+
+	real	0m6.284s
+	user	0m0.097s
+	sys	0m0.022s
+
+	real	0m6.670s
+	user	0m0.100s
+	sys	0m0.023s
+
+	Average	0m6.614s
+
+
+
+
+	index - pid
+	real	0m1.243s
+	user	0m0.099s
+	sys	0m0.023s
+
+	real	0m1.258s
+	user	0m0.103s
+	sys	0m0.023s
+
+	real	0m1.270s
+	user	0m0.100s
+	sys	0m0.024s
+
+	Average	0m1.257s
+
+
+
+
+	compound indexes - startdate, enddate
+	real	0m1.610s
+	user	0m0.098s
+	sys	0m0.022s
+
+	real	0m1.561s
+	user	0m0.097s
+	sys	0m0.023s
+
+	real	0m1.367s
+	user	0m0.098s
+	sys	0m0.022s
+
+	Average	0m1.512s
+

@@ -1,0 +1,55 @@
+Document architecture:
+	project
+		pid
+		name
+		manager
+		tasks
+			name
+			priority
+			status
+			startdate
+			enddate
+			task members
+				email
+				name
+				organization
+
+The performance results are based on 100,000 documents.
+
+
+Analysis on read
+	NO index
+	Average	0m9.283s
+
+	index - startdate
+	Average	0m7.067s
+	startdate is in range of 3360 (28 days * 12 months * 10 years). I chosen it because it has range, and it would help reading from DB because MongoDB index B-tree. The result shows that it did improve the performance in reading, although the improvement is not so remarkable. The reason is that the range of startdate is not very large.
+
+	index - pid
+	Average	0m1.184s
+	pid is unique. Once we have pid, we don't need other fields to look up a document. Index on pid can directly refer to a document in database, so it is the most efficient index. Another benefit is that pid will not change, so that we won't lost or miss match data. From the performance results, index pid performed the shortest time in reading.
+
+	compound indexes - startdate, enddate
+	Average	0m4.361s
+	Both startdate and enddate have a appropriate range, so they are suitable to build indexes. When they form compound indexes, searching the multikeys of compound indexes in B-tree are faster. When the compound indexes are loaded into main memory, it will sort startdate first, then sort enddate if startdate equal. Comparing the results, this compound indexes is much better than index startdate.
+
+
+Analysis on Mix 
+
+	NO index
+	Average	0m7.099s
+
+	index - startdate
+	Average	0m6.614s
+	startdate is in range of 3360 (28 days * 12 months * 10 years). I chosen it because it is in a appropriate range, and it would help reading from DB because MongoDB index B-tree. It has an impact on reading from previous analysis and performance results. The results show that it didn't improve the performance in read and write as much as in all read. The reason is that it updates documents in ascending order based on startdate, so that's random I/O write. On contrary, no index update is sequential I/O read/write. Random I/O write costs much more time than sequential write. Although index startdate saves I/O read time, the overall performance is not very helpful.
+
+	index - pid
+	Average	0m1.257s
+	As the reason in all read, pid is unique, so it performs fastest access. Moreover, sequential I/O read/write can be performed on this index. That's why average time is shortest.
+
+
+
+	compound indexes - startdate, enddate
+	Average	0m1.512s
+	The reasons to choose this compound indexes is as all read. Because the compound indexes contains multikeys startdate and enddate, it is much faster to traverse B-tree than index startdate.
+
